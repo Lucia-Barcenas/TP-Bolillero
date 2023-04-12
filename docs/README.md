@@ -3,5 +3,9 @@
 ```mermaid
 classDiagram
     class Bolillero{
-        +Bolillas: int
+        +Bolillas<list>: int
+        +
     }
+
+    
+```
