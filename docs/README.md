@@ -3,23 +3,22 @@
 ```mermaid
 classDiagram
     class Bolillero{
-        +Bolillas: List~int~
-        +Jugar(List~int~)
+        +Cantidad: int
+        +Bolillas: List~int~ int
+        +Jugar(List~int~) bool
+        +JugarNVeces (List~int~) int
         +SacarBolilla() int
         +MeterBolillas() int
-        +JugarNVeces(List~int~)
     }
-    class IJugada{
+    class IAzar{
         <<interface>>
-        +NumeroAlAzar: int
-        +ElegirBolilla(List~int~)
+        +IndiceAleatorio(List~int~): int
     }
-    class JugadaRandom{
-        +NumeroAlAzar() int
-        +ElegirBolilla() int
+    class AzarRandom{
+        +IndiceAleatorio(List~int~): int
     }
-    Bolillero --> IJugada
-    JugadaRandom --|> IJugada
+    Bolillero --> IAzar
+    AzarRandom --|> IAzar
 
     
 ```
