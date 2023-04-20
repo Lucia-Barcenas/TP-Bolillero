@@ -1,14 +1,14 @@
 ﻿namespace Bolillero.Core;
 public class Bolillero
 {
-    public int cantidad { get; set;}
     public List<int> Bolillas { get; set; }
+    public List<int> Afuera { get; set;}
     public IAzar Azar { get; set; }
 
-    public Bolillero(int cantidad, int Bolillas, IAzar azar)
+    public Bolillero(int Bolillas, int Numeros, int Jugar, IAzar azar)
     {
-        this.cantidad = cantidad;
         this.Bolillas = new List<int>();
+        this.Afuera = new List<int>();
         this.Azar = azar;
     }
 
@@ -22,10 +22,13 @@ public class Bolillero
 
     public int SacarBolilla()
     {
-        Azar.ElegirBolilla();
+        var bolilla = Azar.ElegirBolillaAleatoria(Bolillas);
     }
 
-    public void MeterBolilla(){}
+    public void MeterBolilla()
+    {
+        
+    }
 
     public void JugarNVeces(List<int> JugarNVeces){}
 }
