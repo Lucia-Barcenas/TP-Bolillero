@@ -1,6 +1,6 @@
 namespace Bolillero.Core;
 
-public class JugadaRandom : IAzar
+public class AzarRandom : IAzar
 {
     public int ElegirBolillaAleatoria(List<int> bolillas)
     {
