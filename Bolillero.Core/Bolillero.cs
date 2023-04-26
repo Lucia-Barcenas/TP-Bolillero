@@ -2,7 +2,7 @@
 public class Bolillero
 {
     public List<int> Bolillas { get; set; }
-    public List<int> Afuera { get; set;}
+    public List<int> Afuera { get; set; }
     public IAzar Azar { get; set; }
 
     public Bolillero(int Bolillas, int Afuera, int Jugar, IAzar azar)
@@ -26,18 +26,28 @@ public class Bolillero
     public int SacarBolilla()
     {
         var bolilla = Azar.ElegirBolillaAleatoria(Bolillas);
+        Bolillas.Remove(bolilla);
+        Afuera.Add(bolilla);
         return bolilla;
     }
 
-    public void MeterBolilla()
+    public void MeterBolillas()
     {
         Bolillas.AddRange(Afuera);
         Afuera.Clear();
     }
 
-    public void JugarNVeces(List<int> jugada, int cantidad)
+    public int JugarNVeces(List<int> jugada, int cantidad)
     {
-        var cantidadGanadas = 0;
+        int cantidadGanadas = 0;
         for (int i = 0; i < cantidad; i++)
+        {
+            MeterBolillas();
+            if (Jugar(jugada))
+            {
+                cantidadGanadas++;
+            }
+        }
+        return cantidadGanadas;
     }
 }

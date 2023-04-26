@@ -8,7 +8,7 @@ classDiagram
         +Jugar(List~int~) bool
         +JugarNVeces (List~int~) int
         +SacarBolilla() int
-        +MeterBolillas() int
+        +MeterBolillas()
     }
     class IAzar{
         <<interface>>
