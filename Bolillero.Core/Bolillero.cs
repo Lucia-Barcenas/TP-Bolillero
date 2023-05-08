@@ -5,11 +5,18 @@ public class Bolillero
     public List<int> Afuera { get; set; }
     public IAzar Azar { get; set; }
 
-    public Bolillero(int Bolillas, int Afuera, int Jugar, IAzar azar)
+    public Bolillero(int Bolillas, IAzar azar)
     {
         this.Bolillas = new List<int>();
         this.Afuera = new List<int>();
         this.Azar = azar;
+        CrearBolilla(Bolillas);
+    }
+
+    public void CrearBolilla(int cantidad)
+    {
+        for (int i = 0; i < cantidad; i++)
+            Bolillas.Add(i);
     }
 
     public bool Jugar(List<int> jugada)
