@@ -4,7 +4,7 @@ public class Bolillero
     public List<int> Bolillas { get; set; }
     public List<int> Afuera { get; set; }
     public IAzar Azar { get; set; }
-
+    public IClonable Clonable { get; set; }
     public Bolillero(int Bolillas, IAzar azar)
     {
         this.Bolillas = new List<int>();
@@ -13,7 +13,14 @@ public class Bolillero
         CrearBolilla(Bolillas);
     }
 
-    public void CrearBolilla(int cantidad)
+    private Bolillero(Bolillero original)
+    {
+        Bolillas = new List<int>(original.Bolillas);
+        Afuera = new List<int>(original.Afuera);
+        Azar = original.Azar;
+    }
+
+    private void CrearBolilla(int cantidad)
     {
         for (int i = 0; i < cantidad; i++)
             Bolillas.Add(i);
@@ -57,4 +64,6 @@ public class Bolillero
         }
         return cantidadGanadas;
     }
+
+    internal Bolillero Clonar() => new Bolillero(this);
 }
